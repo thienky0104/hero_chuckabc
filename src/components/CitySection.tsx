@@ -1,26 +1,15 @@
-import { useRef } from 'react';
-
 interface CitySectionProps {
   id: string;
   cityLabel: string;
   cityName: string;
   cityNameItalic: string;
+  cityKey: string;
 }
 
-export default function CitySection({ id, cityLabel, cityName, cityNameItalic }: CitySectionProps) {
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  const slide = (direction: number) => {
-    if (!trackRef.current) return;
-
-    const cardWidth = 320;
-    const gap = 24;
-    const scrollAmount = (cardWidth + gap) * direction;
-
-    trackRef.current.scrollBy({
-      left: scrollAmount,
-      behavior: 'smooth'
-    });
+export default function CitySection({ id, cityLabel, cityName, cityNameItalic, cityKey }: CitySectionProps) {
+  const handleSlide = (direction: number) => {
+    const slideFunc = (window as any).slide;
+    if (slideFunc) slideFunc(cityKey, direction);
   };
 
   return (
@@ -34,13 +23,13 @@ export default function CitySection({ id, cityLabel, cityName, cityNameItalic }:
         </div>
         <div className="city-meta">
           <div className="city-nav-btns">
-            <button className="cnav" onClick={() => slide(-1)}>&#8592;</button>
-            <button className="cnav" onClick={() => slide(1)}>&#8594;</button>
+            <button className="cnav" onClick={() => handleSlide(-1)}>←</button>
+            <button className="cnav" onClick={() => handleSlide(1)}>→</button>
           </div>
         </div>
       </div>
       <div className="carousel-outer">
-        <div className="carousel-track" ref={trackRef}>
+        <div className="carousel-track" id={`track-${cityKey}`}>
         </div>
       </div>
     </section>

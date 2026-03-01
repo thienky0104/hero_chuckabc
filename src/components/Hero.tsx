@@ -130,6 +130,7 @@ export default function Hero() {
         cityLabel="Thành phố Hồ Chí Minh"
         cityName="Sài"
         cityNameItalic="Gòn"
+        cityKey="sg"
       />
 
       <CitySection
@@ -137,6 +138,7 @@ export default function Hero() {
         cityLabel="Thủ đô Việt Nam"
         cityName="Hà"
         cityNameItalic="Nội"
+        cityKey="hn"
       />
 
       <CitySection
@@ -144,6 +146,7 @@ export default function Hero() {
         cityLabel="Miền Trung Việt Nam"
         cityName="Đà"
         cityNameItalic="Nẵng"
+        cityKey="dn"
       />
 
       <CitySection
@@ -151,6 +154,7 @@ export default function Hero() {
         cityLabel="Thiên đường biển xanh"
         cityName="Nha"
         cityNameItalic="Trang"
+        cityKey="nt"
       />
     </>
   );
